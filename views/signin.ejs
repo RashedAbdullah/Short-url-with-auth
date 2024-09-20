@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        margin: 40px;
+        font-size: 22px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      form {
+        background-color: gainsboro;
+        padding: 20px 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: end;
+        gap: 10px;
+      }
+      input,
+      button {
+        font-size: 22px;
+      }
+      input {
+        padding: 5px;
+      }
+      button {
+        background-color: black;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+      td {
+        padding: 5px 20px;
+      }
+    </style>
+    <title>Signin</title>
+  </head>
+  <body>
+    <h2>Signin</h2>
+    <form action="/user/signin" method="POST">
+      <div>
+        <label for="email">Email: </label>
+        <input
+          required
+          type="email"
+          id="email"
+          name="email"
+          placeholder="example@gmail.com"
+        />
+      </div>
+      <div>
+        <label for="password">Password: </label>
+        <input
+          required
+          type="password"
+          id="password"
+          name="password"
+          placeholder="********"
+        />
+      </div>
+      <div><button type="submit">Submit</button></div>
+      <div>
+        <% if (locals.error) { %>
+        <p style="color: red"><%= error %></p>
+        <% } %>
+      </div>
+    </form>
+  </body>
+</html>

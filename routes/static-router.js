@@ -3,7 +3,8 @@ const urlModel = require("../models/url-model");
 const staticRouter = express.Router();
 
 staticRouter.get("/", async (req, res) => {
-  const urls = await urlModel.find({});
+  if (!req.user) return res.redirect("/signin");
+  const urls = await urlModel.find({ createdBy: req.user._id });
   const headers = {
     title: "Short URL",
     description: "This is the Short url",

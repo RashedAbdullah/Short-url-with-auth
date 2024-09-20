@@ -16,16 +16,15 @@ const handleUserSignup = async (req, res) => {
 const handleUserSignin = async (req, res) => {
   const { email, password } = req.body;
   const user = await userModel.findOne({ email, password });
-  console.log("user" + " " + user);
+
   if (!user) {
     return res.render("signin", {
       error: "Invalid user or password",
     });
   }
 
-  const sessionId = uuidv4();
-  setUser(sessionId, user);
-  res.cookie("uid", sessionId);
+  const token = setUser(user);
+  res.cookie("uid", token);
   return res.redirect("/");
 };
 

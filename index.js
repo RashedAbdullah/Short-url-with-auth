@@ -30,4 +30,6 @@ app.use("/", staticRouter);
 app.use("/user", checkAuth, userRouter);
 app.use("/url", restrictToLogedinUserOnly, urlRouter);
 
-app.listen(PORT, () => console.log(`Server running at ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server running at http://localhost:${PORT}`)
+);
